@@ -1,0 +1,2913 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AetherAI is a leading-edge AI operations and workflow automation company. Automate your infrastructure, cognitive analytics, and security dynamically.">
+    <meta name="keywords" content="AI, Automation, Machine Learning, Devops, AetherAI, SaaS, Tech, Future">
+    <meta name="author" content="AetherAI Corp">
+    <title>AetherAI | Next-Gen Autonomous Operations Platform</title>
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --bg-color: #0b0f19;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --bg-card-hover: rgba(31, 41, 55, 0.8);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(99, 102, 241, 0.4);
+
+            --primary: #6366f1;
+            /* Indigo */
+            --primary-glow: rgba(99, 102, 241, 0.15);
+            --primary-hover: #4f46e5;
+
+            --secondary: #a855f7;
+            /* Purple */
+            --secondary-glow: rgba(168, 85, 247, 0.15);
+            --secondary-hover: #9333ea;
+
+            --accent: #14b8a6;
+            /* Teal */
+            --accent-glow: rgba(20, 184, 166, 0.15);
+
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --text-dark: #6b7280;
+
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+            --border-radius-xl: 30px;
+
+            --font-main: 'Inter', sans-serif;
+            --font-title: 'Outfit', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-hover) var(--bg-color);
+        }
+
+        /* Scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Glow Backdrops */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vh;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+            z-index: -10;
+            pointer-events: none;
+            filter: blur(80px);
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vh;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+            z-index: -10;
+            pointer-events: none;
+            filter: blur(80px);
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-title);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Global UI Utilities */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #14b8a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            font-family: var(--font-main);
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: var(--border-radius-md);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: none;
+            outline: none;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+            background: linear-gradient(135deg, var(--primary-hover) 0%, var(--secondary-hover) 100%);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-text {
+            background: transparent;
+            color: var(--text-main);
+            padding: 8px 16px;
+        }
+
+        .btn-text:hover {
+            color: var(--primary);
+        }
+
+        .glass-panel {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            transition: all 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.05);
+        }
+
+        /* Header Navigation */
+        .header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 15, 25, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition-normal);
+        }
+
+        .header.scrolled {
+            background: rgba(9, 13, 22, 0.9);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-title);
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 50%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-svg {
+            width: 32px;
+            height: 32px;
+            fill: none;
+            stroke: url(#logoGradient);
+            stroke-width: 2.5;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-muted);
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #ffffff;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Burger Menu */
+        .burger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .burger span {
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-main);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .burger.open span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .burger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger.open span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: rgba(11, 15, 25, 0.95);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid var(--border-color);
+            padding: 100px 32px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 999;
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .mobile-menu-link {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .mobile-menu-link:hover,
+        .mobile-menu-link.active {
+            color: #ffffff;
+        }
+
+        /* Page Layout & Animations */
+        .page-section {
+            display: none;
+            opacity: 0;
+            padding: 80px 0 120px;
+        }
+
+        .page-section.active {
+            display: block;
+            animation: sectionEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes sectionEnter {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* HOMEPAGE */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 64px;
+            padding: 60px 0 100px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: var(--border-radius-xl);
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero-tag .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary);
+            animation: pulse-glow 1.5s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+                box-shadow: 0 0 12px var(--primary);
+            }
+
+            100% {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
+        }
+
+        .hero-title {
+            font-size: 56px;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 520px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Hero Dashboard Mock (Premium visual showcase) */
+        .hero-visual {
+            flex: 1;
+            position: relative;
+            max-width: 540px;
+        }
+
+        .dashboard-mock {
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 16px;
+        }
+
+        .dashboard-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dashboard-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dashboard-dot.red {
+            background-color: var(--danger);
+        }
+
+        .dashboard-dot.yellow {
+            background-color: var(--warning);
+        }
+
+        .dashboard-dot.green {
+            background-color: var(--success);
+        }
+
+        .dashboard-title {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            padding: 16px;
+            transition: var(--transition-fast);
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .stat-val {
+            font-size: 24px;
+            font-family: var(--font-title);
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .stat-chart-bar {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            margin-top: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stat-chart-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+            width: 65%;
+            transition: width 1.5s ease-in-out;
+        }
+
+        .dashboard-terminal {
+            background: #05070c;
+            border-radius: var(--border-radius-md);
+            padding: 16px;
+            font-family: monospace;
+            font-size: 12px;
+            color: var(--accent);
+            height: 140px;
+            overflow-y: hidden;
+            border: 1px solid rgba(20, 184, 166, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .terminal-line {
+            display: flex;
+            gap: 8px;
+            animation: lineFadeIn 0.3s ease forwards;
+        }
+
+        @keyframes lineFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .terminal-prompt {
+            color: var(--primary);
+            user-select: none;
+        }
+
+        .terminal-text {
+            color: var(--text-main);
+        }
+
+        /* Stats Strip */
+        .stats-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin: 60px 0 100px;
+            text-align: center;
+        }
+
+        .strip-card {
+            padding: 32px;
+        }
+
+        .strip-number {
+            font-size: 48px;
+            font-weight: 800;
+            font-family: var(--font-title);
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffffff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .strip-label {
+            font-size: 15px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .section-title-area {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 56px;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            padding: 40px 32px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .feature-icon-wrapper {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--border-radius-md);
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            margin-bottom: 24px;
+            transition: var(--transition-normal);
+        }
+
+        .feature-card:hover .feature-icon-wrapper {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 0 20px var(--primary-glow);
+            transform: scale(1.05);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .feature-link {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .feature-link:hover {
+            color: var(--secondary);
+        }
+
+        .feature-link svg {
+            transition: transform var(--transition-fast);
+        }
+
+        .feature-link:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* ABOUT US */
+        .about-story {
+            display: flex;
+            align-items: center;
+            gap: 64px;
+            margin-bottom: 100px;
+        }
+
+        .about-story-content {
+            flex: 1;
+        }
+
+        .about-story-visual {
+            flex: 1;
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            height: 380px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-story-visual::before {
+            content: '';
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 60%);
+            animation: orbit 12s linear infinite;
+        }
+
+        @keyframes orbit {
+            0% {
+                transform: rotate(0deg) translate(40px) rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg) translate(40px) rotate(-360deg);
+            }
+        }
+
+        .tech-diagram {
+            z-index: 2;
+            width: 70%;
+            height: 70%;
+            border-radius: 50%;
+            border: 2px dashed rgba(255, 255, 255, 0.05);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tech-node {
+            position: absolute;
+            width: 44px;
+            height: 44px;
+            background: var(--bg-card);
+            border: 1px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .tech-node.center {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
+        }
+
+        .tech-node-1 {
+            top: -22px;
+        }
+
+        .tech-node-2 {
+            bottom: -22px;
+        }
+
+        .tech-node-3 {
+            left: -22px;
+        }
+
+        .tech-node-4 {
+            right: -22px;
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 100px;
+        }
+
+        .value-card {
+            padding: 32px;
+            text-align: center;
+        }
+
+        .value-num {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--accent);
+            background: rgba(20, 184, 166, 0.1);
+            padding: 4px 12px;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 20px;
+            border: 1px solid rgba(20, 184, 166, 0.15);
+        }
+
+        .value-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .team-card {
+            padding: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary-glow) 0%, var(--secondary-glow) 100%);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition-normal);
+        }
+
+        .team-avatar svg {
+            width: 50px;
+            height: 50px;
+            color: var(--text-muted);
+            transition: var(--transition-normal);
+        }
+
+        .team-card:hover .team-avatar {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--primary-glow);
+            transform: scale(1.05);
+        }
+
+        .team-card:hover .team-avatar svg {
+            color: var(--primary);
+        }
+
+        .team-name {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .team-role {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .team-bio {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .team-socials {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: var(--transition-fast);
+        }
+
+        .social-icon:hover {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: var(--text-main);
+            transform: translateY(-2px);
+        }
+
+        /* CONTACT US */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 64px;
+            align-items: flex-start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .detail-item {
+            display: flex;
+            gap: 16px;
+        }
+
+        .detail-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--border-radius-md);
+            background: rgba(20, 184, 166, 0.08);
+            border: 1px solid rgba(20, 184, 166, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .detail-content h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .detail-content p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Accordion FAQ */
+        .faq-section h3 {
+            font-size: 22px;
+            margin-bottom: 24px;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            background: rgba(255, 255, 255, 0.01);
+            overflow: hidden;
+            transition: var(--transition-normal);
+        }
+
+        .faq-header {
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-header h4 {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .faq-chevron {
+            width: 16px;
+            height: 16px;
+            transition: transform var(--transition-normal);
+            color: var(--text-muted);
+        }
+
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
+            padding: 0 24px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .faq-item.active {
+            border-color: var(--border-hover);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .faq-item.active .faq-chevron {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        .faq-item.active .faq-body {
+            max-height: 200px;
+            padding: 0 24px 20px;
+            transition: max-height 0.4s cubic-bezier(1, 0, 1, 0), padding 0.3s ease;
+        }
+
+        /* Forms Layout & Inputs */
+        .form-panel {
+            padding: 40px;
+        }
+
+        .form-title {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .form-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            color: #ffffff;
+            font-family: var(--font-main);
+            font-size: 14px;
+            outline: none;
+            transition: all var(--transition-fast);
+        }
+
+        /* Floating Label Logic */
+        .input-group label {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+            transition: all var(--transition-fast);
+            font-size: 14px;
+            background: transparent;
+        }
+
+        .input-group.textarea-group label {
+            top: 24px;
+        }
+
+        /* When focused or input has text */
+        .input-field:focus~label,
+        .input-field:not(:placeholder-shown)~label {
+            top: 0;
+            font-size: 12px;
+            color: var(--primary);
+            background: #0e1322;
+            padding: 0 6px;
+            border-radius: 4px;
+            transform: translateY(-50%) scale(0.95);
+            left: 12px;
+        }
+
+        .input-field:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .input-field.error {
+            border-color: var(--danger) !important;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.15) !important;
+        }
+
+        .input-field.error~label {
+            color: var(--danger) !important;
+        }
+
+        .input-error-msg {
+            color: var(--danger);
+            font-size: 11px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .input-error-msg.visible {
+            display: block;
+        }
+
+        /* Password Input Wrapper */
+        .password-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .password-toggle:hover {
+            color: var(--text-main);
+        }
+
+        /* LOGIN / REGISTER CARDS */
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0 80px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 480px;
+            padding: 48px 40px;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .auth-footer a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+            color: var(--secondary);
+        }
+
+        .social-logins {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            border-radius: var(--border-radius-md);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-dark);
+            font-size: 12px;
+            margin: 24px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .auth-divider:not(:empty)::before {
+            margin-right: 16px;
+        }
+
+        .auth-divider:not(:empty)::after {
+            margin-left: 16px;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin: 8px 0 4px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-container input {
+            display: none;
+        }
+
+        .custom-checkbox {
+            width: 16px;
+            height: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            display: inline-block;
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            transition: var(--transition-fast);
+        }
+
+        .checkbox-container input:checked+.custom-checkbox {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .checkbox-container input:checked+.custom-checkbox::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 2px;
+            width: 4px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* Password Strength Meter */
+        .strength-meter-wrapper {
+            margin-top: 8px;
+        }
+
+        .strength-bar {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            display: flex;
+            gap: 4px;
+        }
+
+        .strength-segment {
+            flex: 1;
+            height: 100%;
+            background: transparent;
+            border-radius: 2px;
+            transition: background 0.3s ease;
+        }
+
+        .strength-label {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .strength-label span {
+            font-weight: 600;
+        }
+
+        /* Success Toast */
+        .toast-container {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: none;
+        }
+
+        .toast {
+            min-width: 320px;
+            padding: 16px 20px;
+            background: rgba(17, 24, 39, 0.9);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: var(--border-radius-md);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            backdrop-filter: blur(12px);
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: auto;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .toast-success {
+            border-left: 4px solid var(--success);
+        }
+
+        .toast-icon-success {
+            color: var(--success);
+            flex-shrink: 0;
+        }
+
+        .toast-content h5 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .toast-content p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: rgba(8, 11, 19, 0.95);
+            border-top: 1px solid var(--border-color);
+            padding: 80px 0 40px;
+            margin-top: auto;
+            position: relative;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr) 1.5fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo-area {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-logo-area p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .footer-column h4 {
+            font-size: 15px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            list-style: none;
+        }
+
+        .footer-link {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .footer-newsletter h4 {
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        .footer-newsletter p {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .newsletter-form {
+            position: relative;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 12px 50px 12px 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            color: #ffffff;
+            outline: none;
+            font-size: 13px;
+            transition: var(--transition-fast);
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--primary);
+        }
+
+        .newsletter-submit {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border-radius: var(--border-radius-sm);
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
+        }
+
+        .newsletter-submit:hover {
+            background: var(--primary-hover);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 40px;
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+        }
+
+        /* RESPONSIVE BREAKPOINTS */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 48px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-desc {
+                max-width: 600px;
+            }
+
+            .hero-visual {
+                width: 100%;
+                max-width: 500px;
+            }
+
+            .features-grid,
+            .about-story,
+            .values-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .about-story {
+                flex-direction: column;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+
+            .footer-newsletter {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .nav-links,
+            .nav-actions .btn-secondary {
+                display: none;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 40px;
+            }
+
+            .stats-strip {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .form-row-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-newsletter {
+                grid-column: span 1;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SVG Gradients Definition -->
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+        <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a855f7" />
+                <stop offset="100%" stop-color="#6366f1" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- Header -->
+    <header class="header" id="navbar">
+        <div class="container nav-wrapper">
+            <!-- Logo -->
+            <a href="#home" class="logo">
+                <svg class="logo-svg" viewBox="0 0 32 32">
+                    <path d="M16 2 L2 9 L2 23 L16 30 L30 23 L30 9 Z" />
+                    <path d="M16 8 L6 13 L6 19 L16 24 L26 19 L26 13 Z" style="opacity: 0.7;" />
+                    <circle cx="16" cy="16" r="3" fill="url(#logoGradient)" />
+                </svg>
+                AetherAI
+            </a>
+
+            <!-- Desktop Links -->
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active" id="nav-home">Home</a></li>
+                <li><a href="#about" class="nav-link" id="nav-about">About Us</a></li>
+                <li><a href="#contact" class="nav-link" id="nav-contact">Contact Us</a></li>
+            </ul>
+
+            <!-- Header Action Buttons -->
+            <div class="nav-actions">
+                <a href="#login" class="btn btn-secondary" id="nav-login">Sign In</a>
+                <a href="#register" class="btn btn-primary" id="nav-register">Get Started</a>
+                <button class="burger" id="burger-btn" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav class="mobile-menu" id="mobile-drawer">
+        <ul class="mobile-menu-links">
+            <li><a href="#home" class="mobile-menu-link active" id="mob-home">Home</a></li>
+            <li><a href="#about" class="mobile-menu-link" id="mob-about">About Us</a></li>
+            <li><a href="#contact" class="mobile-menu-link" id="mob-contact">Contact Us</a></li>
+            <li><a href="#login" class="mobile-menu-link" id="mob-login">Sign In</a></li>
+            <li><a href="#register" class="mobile-menu-link" id="mob-register">Get Started</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Views Container -->
+    <main>
+
+        <!-- 1. HOME VIEW -->
+        <section id="home" class="page-section active">
+            <div class="container">
+                <!-- Hero Section -->
+                <div class="hero">
+                    <div class="hero-content">
+                        <div class="hero-tag">
+                            <span class="pulse-dot"></span>
+                            Aether V2.4 Model is now live
+                        </div>
+                        <h1 class="hero-title">Automate Your Operations with <span class="gradient-text">Adaptive
+                                AI</span></h1>
+                        <p class="hero-desc">The self-optimizing platform that integrates with your tech stack to
+                            orchestrate workloads, secure data flows, and provide cognitive operations intelligence in
+                            real-time.</p>
+                        <div class="hero-actions">
+                            <a href="#register" class="btn btn-primary">Start Free Trial</a>
+                            <a href="#about" class="btn btn-secondary">Explore Platform</a>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual">
+                        <!-- Glassmorphic Interactive Dashboard Component -->
+                        <div class="glass-panel dashboard-mock">
+                            <div class="dashboard-header">
+                                <div class="dashboard-dots">
+                                    <span class="dashboard-dot red"></span>
+                                    <span class="dashboard-dot yellow"></span>
+                                    <span class="dashboard-dot green"></span>
+                                </div>
+                                <div class="dashboard-title">ops_agent@aether: ~</div>
+                            </div>
+
+                            <div class="dashboard-stats">
+                                <div class="stat-card">
+                                    <span class="stat-label">Model Accuracy</span>
+                                    <div class="stat-val" id="model-accuracy-val">99.84%</div>
+                                    <div class="stat-chart-bar">
+                                        <div class="stat-chart-fill" style="width: 99.8%;" id="model-accuracy-fill">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="stat-label">Automated Workloads</span>
+                                    <div class="stat-val" id="workload-volume-val">427.3k</div>
+                                    <div class="stat-chart-bar">
+                                        <div class="stat-chart-fill" style="width: 78%;" id="workload-volume-fill">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dashboard-terminal" id="terminal-screen">
+                                <div class="terminal-line">
+                                    <span class="terminal-prompt">$</span>
+                                    <span class="terminal-text">aether-core init --env production</span>
+                                </div>
+                                <div class="terminal-line">
+                                    <span class="terminal-prompt">&gt;</span>
+                                    <span class="terminal-text" style="color: var(--accent);">[SUCCESS] Connection
+                                        secure. Node cluster optimized.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Strip -->
+                <div class="stats-strip">
+                    <div class="glass-panel strip-card">
+                        <div class="strip-number">99.99%</div>
+                        <div class="strip-label">Runtime Reliability</div>
+                    </div>
+                    <div class="glass-panel strip-card">
+                        <div class="strip-number">12.5M+</div>
+                        <div class="strip-label">Workflows Processed</div>
+                    </div>
+                    <div class="glass-panel strip-card">
+                        <div class="strip-number">&lt; 14ms</div>
+                        <div class="strip-label">Average Decisional Latency</div>
+                    </div>
+                </div>
+
+                <!-- Features Grid Section -->
+                <div class="section-title-area">
+                    <span class="section-tag">Platform Core</span>
+                    <h2 class="section-title">Fully Integrated Autonomous Capabilities</h2>
+                    <p class="section-subtitle">Scale your infrastructure and data orchestrations globally with
+                        enterprise-grade modular capabilities designed for modern architecture.</p>
+                </div>
+
+                <div class="features-grid">
+                    <!-- Feature 1 -->
+                    <div class="glass-panel feature-card">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.656 48.656 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3M4.5 12c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l-3 3m3-3l3 3" />
+                            </svg>
+                        </div>
+                        <h3>Neural Automations</h3>
+                        <p>Deploy event-driven triggers that monitor live parameters and optimize workflow scheduling
+                            dynamically to prevent service bottlenecks.</p>
+                        <a href="#about" class="feature-link">
+                            Learn More
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="glass-panel feature-card">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
+                            </svg>
+                        </div>
+                        <h3>Cognitive Analytics</h3>
+                        <p>Analyze massive server clusters, application logs, and active traffic signals in real-time to
+                            surface behavioral intelligence and predictive failures.</p>
+                        <a href="#about" class="feature-link">
+                            Learn More
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="glass-panel feature-card">
+                        <div class="feature-icon-wrapper">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                            </svg>
+                        </div>
+                        <h3>Secure Frameworks</h3>
+                        <p>Automate dynamic key rotations, context-aware user controls, and intelligent threat
+                            mitigations running continuously inside a zero-trust architecture.</p>
+                        <a href="#about" class="feature-link">
+                            Learn More
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ABOUT US VIEW -->
+        <section id="about" class="page-section">
+            <div class="container">
+                <div class="section-title-area">
+                    <span class="section-tag">Our Profile</span>
+                    <h2 class="section-title">Re-architecting Enterprise Operations</h2>
+                    <p class="section-subtitle">Founded with a mission to bring hyper-scale artificial intelligence into
+                        every operational lifecycle, AetherAI serves organizations worldwide.</p>
+                </div>
+
+                <!-- Story Block -->
+                <div class="about-story">
+                    <div class="about-story-content">
+                        <h3 style="font-size: 26px; margin-bottom: 20px;">The Next Frontier in Autonomic Infrastructure
+                        </h3>
+                        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 15px;">AetherAI was born in
+                            Silicon Valley in 2023 with a bold mandate: replace complex manual operations scripting with
+                            adaptive, learning-based AI networks. Today, we empower over 500 enterprises to run
+                            automated, highly secure infrastructure networks without constant administrative oversight.
+                        </p>
+                        <p style="color: var(--text-muted); font-size: 15px;">Our design approach is zero-trust,
+                            API-first, and natively adaptive. By utilizing custom models engineered explicitly for
+                            large-scale operations infrastructure, AetherAI minimizes manual downtime and eliminates
+                            systemic engineering errors before they trigger alerts.</p>
+                    </div>
+
+                    <!-- Tech Diagram Display -->
+                    <div class="about-story-visual">
+                        <div class="tech-diagram">
+                            <div class="tech-node center">
+                                <svg width="24" height="24" fill="none" stroke="#fff" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9.813 15.904L9 21l8.904-4.474m-8.904-.622L4 15l12-11 2.904 2.904m-12 11h.008v.008H7v-.008zm0-3.5h.008v.008H7v-.008zm3.5-3.5h.008v.008h-.008v-.008zm0 7h.008v.008h-.008v-.008z" />
+                                </svg>
+                            </div>
+                            <div class="tech-node tech-node-1">
+                                <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 18v3m0 0h.01m-.01 0H12m0-3a3 3 0 003-3V9a3 3 0 00-6 0v6a3 3 0 003 3z" />
+                                </svg>
+                            </div>
+                            <div class="tech-node tech-node-2">
+                                <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M20 21l-6-6m0 0l-3-3m3 3l-3 3m3-3l6-6" />
+                                </svg>
+                            </div>
+                            <div class="tech-node tech-node-3">
+                                <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                            <div class="tech-node tech-node-4">
+                                <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Corporate Values -->
+                <div class="values-grid">
+                    <div class="glass-panel value-card">
+                        <span class="value-num">Value 01</span>
+                        <h3>Fierce Innovation</h3>
+                        <p>We continuously challenge existing IT paradigms, iterating our neural models daily to
+                            establish higher performance levels.</p>
+                    </div>
+                    <div class="glass-panel value-card">
+                        <span class="value-num">Value 02</span>
+                        <h3>Universal Security</h3>
+                        <p>Securing enterprise data pipelines is foundational to AetherAI. We deploy military-grade
+                            cryptography as default.</p>
+                    </div>
+                    <div class="glass-panel value-card">
+                        <span class="value-num">Value 03</span>
+                        <h3>Total Transparency</h3>
+                        <p>We explain how decisions are made. Aether's dashboard maps neural weights clearly to ensure
+                            operational clarity.</p>
+                    </div>
+                </div>
+
+                <!-- Team Grid Section -->
+                <div class="section-title-area">
+                    <span class="section-tag">Our Team</span>
+                    <h2 class="section-title">Engineered by Operations Visionaries</h2>
+                    <p class="section-subtitle">A group of infrastructure specialists, platform developers, and machine
+                        learning researchers dedicated to building operational automation systems.</p>
+                </div>
+
+                <div class="team-grid">
+                    <!-- Member 1 -->
+                    <div class="glass-panel team-card">
+                        <div class="team-avatar">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </div>
+                        <h4 class="team-name">Dr. Evelyn Vance</h4>
+                        <p class="team-role">Chief Executive Officer</p>
+                        <p class="team-bio">Former Distributed Systems Research Director with 15+ years architecting
+                            hyper-scale operations structures.</p>
+                        <div class="team-socials">
+                            <a href="#" class="social-icon" aria-label="LinkedIn Profile"><svg width="14" height="14"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg></a>
+                            <a href="#" class="social-icon" aria-label="Twitter Profile"><svg width="14" height="14"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                                </svg></a>
+                        </div>
+                    </div>
+                    <!-- Member 2 -->
+                    <div class="glass-panel team-card">
+                        <div class="team-avatar">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </div>
+                        <h4 class="team-name">Marcus Finch</h4>
+                        <p class="team-role">Chief Technology Officer</p>
+                        <p class="team-bio">Co-authored open-source orchestration libraries used globally. Devoted to
+                            neural scheduler design.</p>
+                        <div class="team-socials">
+                            <a href="#" class="social-icon" aria-label="LinkedIn Profile"><svg width="14" height="14"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg></a>
+                            <a href="#" class="social-icon" aria-label="GitHub Profile"><svg width="14" height="14"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                </svg></a>
+                        </div>
+                    </div>
+                    <!-- Member 3 -->
+                    <div class="glass-panel team-card">
+                        <div class="team-avatar">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                        </div>
+                        <h4 class="team-name">Amara Patel</h4>
+                        <p class="team-role">Head of Zero-Trust Protocols</p>
+                        <p class="team-bio">Specialist in cryptography and identity models. Author of 'Practical
+                            Cryptographic Pipelines'.</p>
+                        <div class="team-socials">
+                            <a href="#" class="social-icon" aria-label="LinkedIn Profile"><svg width="14" height="14"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg></a>
+                            <a href="#" class="social-icon" aria-label="Twitter Profile"><svg width="14" height="14"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. CONTACT US VIEW -->
+        <section id="contact" class="page-section">
+            <div class="container">
+                <div class="section-title-area">
+                    <span class="section-tag">Get in touch</span>
+                    <h2 class="section-title">We'd Love to Hear From You</h2>
+                    <p class="section-subtitle">Reach our teams directly for enterprise configurations, platform demos,
+                        or operational questions.</p>
+                </div>
+
+                <div class="contact-layout">
+                    <!-- Contact Information & Accordion FAQ -->
+                    <div class="contact-info">
+                        <div class="contact-details">
+                            <!-- Detail 1 -->
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z" />
+                                    </svg>
+                                </div>
+                                <div class="detail-content">
+                                    <h4>Headquarters</h4>
+                                    <p>400 Innovation Way, Suite 100, San Francisco, CA 94107</p>
+                                </div>
+                            </div>
+                            <!-- Detail 2 -->
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                                    </svg>
+                                </div>
+                                <div class="detail-content">
+                                    <h4>Communications</h4>
+                                    <p>solutions@aetherai.io (Sales)<br>operations@aetherai.io (Support)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion FAQ -->
+                        <div class="faq-section">
+                            <h3>Frequently Asked Questions</h3>
+                            <div class="faq-list">
+                                <!-- FAQ 1 -->
+                                <div class="faq-item">
+                                    <div class="faq-header">
+                                        <h4>How does AetherAI connect to my systems?</h4>
+                                        <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2.5"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </div>
+                                    <div class="faq-body">
+                                        AetherAI links seamlessly via read-only cloud APIs or localized agents,
+                                        establishing communication without modifying underlying server settings directly
+                                        unless instructed.
+                                    </div>
+                                </div>
+                                <!-- FAQ 2 -->
+                                <div class="faq-item">
+                                    <div class="faq-header">
+                                        <h4>Is there a trial period available?</h4>
+                                        <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2.5"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </div>
+                                    <div class="faq-body">
+                                        Yes, our free trial provides full access to Aether V2.4 for 14 days, allowing
+                                        validation on up to 50 active container clusters.
+                                    </div>
+                                </div>
+                                <!-- FAQ 3 -->
+                                <div class="faq-item">
+                                    <div class="faq-header">
+                                        <h4>What compliance standards are supported?</h4>
+                                        <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2.5"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </div>
+                                    <div class="faq-body">
+                                        AetherAI meets SOC2 Type II, ISO 27001, and HIPAA compliance requirements. All
+                                        operational data in transit and at rest is secured via AES-256-GCM.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Card -->
+                    <div class="glass-panel form-panel">
+                        <h3 class="form-title">Send a Message</h3>
+                        <p class="form-desc">Fill out your details below and our solution architects will connect with
+                            you within 24 hours.</p>
+
+                        <form id="contact-form" novalidate>
+                            <div class="form-grid">
+                                <div class="form-row-2">
+                                    <div class="input-group">
+                                        <input type="text" id="contact-name" class="input-field" placeholder=" "
+                                            required autocomplete="name">
+                                        <label for="contact-name">Full Name</label>
+                                        <span class="input-error-msg" id="contact-name-error">Please enter your
+                                            name.</span>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="email" id="contact-email" class="input-field" placeholder=" "
+                                            required autocomplete="email">
+                                        <label for="contact-email">Email Address</label>
+                                        <span class="input-error-msg" id="contact-email-error">Please enter a valid
+                                            email address.</span>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" id="contact-subject" class="input-field" placeholder=" "
+                                        required>
+                                    <label for="contact-subject">Subject</label>
+                                    <span class="input-error-msg" id="contact-subject-error">Subject cannot be
+                                        blank.</span>
+                                </div>
+                                <div class="input-group textarea-group">
+                                    <textarea id="contact-message" class="input-field" rows="5" placeholder=" " required
+                                        style="resize: none;"></textarea>
+                                    <label for="contact-message">Message Details</label>
+                                    <span class="input-error-msg" id="contact-message-error">Message details are
+                                        required.</span>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
+                                    Send Message
+                                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. LOGIN VIEW -->
+        <section id="login" class="page-section">
+            <div class="container auth-container">
+                <div class="glass-panel auth-card">
+                    <h2 class="form-title" style="text-align: center;">Welcome Back</h2>
+                    <p class="form-desc" style="text-align: center; margin-bottom: 24px;">Enter your credentials to
+                        manage your clusters</p>
+
+                    <div class="social-logins">
+                        <button class="social-btn" type="button">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.24 10.285V13.4h6.887c-.648 2.41-2.519 4.113-5.647 4.113-3.886 0-7.054-3.177-7.054-7.062s3.168-7.062 7.054-7.062c1.782 0 3.328.618 4.545 1.8l2.42-2.42A11.936 11.936 0 0013.48 0C6.985 0 1.64 5.345 1.64 11.84s5.345 11.84 11.84 11.84c6.772 0 11.238-4.757 11.238-11.438 0-.773-.082-1.346-.227-1.957H12.24z" />
+                            </svg>
+                            Google
+                        </button>
+                        <button class="social-btn" type="button">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </button>
+                    </div>
+
+                    <div class="auth-divider">Or continue with</div>
+
+                    <form id="login-form" novalidate>
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <input type="email" id="login-email" class="input-field" placeholder=" " required
+                                    autocomplete="email">
+                                <label for="login-email">Email Address</label>
+                                <span class="input-error-msg" id="login-email-error">Please enter a valid email.</span>
+                            </div>
+                            <div class="input-group">
+                                <div class="password-wrapper">
+                                    <input type="password" id="login-password" class="input-field" placeholder=" "
+                                        required autocomplete="current-password">
+                                    <label for="login-password">Password</label>
+                                    <button type="button" class="password-toggle" id="login-pw-toggle"
+                                        aria-label="Toggle password visibility">
+                                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                                            viewBox="0 0 24 24" id="login-pw-eye">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <span class="input-error-msg" id="login-password-error">Password must be entered.</span>
+                            </div>
+
+                            <div class="remember-forgot">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="remember-me">
+                                    <span class="custom-checkbox"></span>
+                                    Remember me
+                                </label>
+                                <a href="#contact" style="color: var(--primary); font-weight: 500;">Forgot Password?</a>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="margin-top: 10px; width: 100%;">
+                                Sign In
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="auth-footer">
+                        New to AetherAI? <a href="#register">Create an account</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. REGISTER VIEW -->
+        <section id="register" class="page-section">
+            <div class="container auth-container">
+                <div class="glass-panel auth-card">
+                    <h2 class="form-title" style="text-align: center;">Get Started</h2>
+                    <p class="form-desc" style="text-align: center; margin-bottom: 24px;">Deploy your free cloud-hosted
+                        instance today</p>
+
+                    <div class="social-logins">
+                        <button class="social-btn" type="button">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.24 10.285V13.4h6.887c-.648 2.41-2.519 4.113-5.647 4.113-3.886 0-7.054-3.177-7.054-7.062s3.168-7.062 7.054-7.062c1.782 0 3.328.618 4.545 1.8l2.42-2.42A11.936 11.936 0 0013.48 0C6.985 0 1.64 5.345 1.64 11.84s5.345 11.84 11.84 11.84c6.772 0 11.238-4.757 11.238-11.438 0-.773-.082-1.346-.227-1.957H12.24z" />
+                            </svg>
+                            Google
+                        </button>
+                        <button class="social-btn" type="button">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </button>
+                    </div>
+
+                    <div class="auth-divider">Or use your email</div>
+
+                    <form id="register-form" novalidate>
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <input type="text" id="register-name" class="input-field" placeholder=" " required
+                                    autocomplete="name">
+                                <label for="register-name">Full Name</label>
+                                <span class="input-error-msg" id="register-name-error">Please enter your name.</span>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" id="register-email" class="input-field" placeholder=" " required
+                                    autocomplete="email">
+                                <label for="register-email">Email Address</label>
+                                <span class="input-error-msg" id="register-email-error">Please enter a valid email
+                                    address.</span>
+                            </div>
+                            <div class="input-group">
+                                <div class="password-wrapper">
+                                    <input type="password" id="register-password" class="input-field" placeholder=" "
+                                        required autocomplete="new-password">
+                                    <label for="register-password">Create Password</label>
+                                    <button type="button" class="password-toggle" id="register-pw-toggle"
+                                        aria-label="Toggle password visibility">
+                                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                                            viewBox="0 0 24 24" id="register-pw-eye">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <span class="input-error-msg" id="register-password-error">Password must contain at
+                                    least 6 characters.</span>
+
+                                <!-- Password Strength Meter -->
+                                <div class="strength-meter-wrapper">
+                                    <div class="strength-bar">
+                                        <div class="strength-segment" id="seg-1"></div>
+                                        <div class="strength-segment" id="seg-2"></div>
+                                        <div class="strength-segment" id="seg-3"></div>
+                                    </div>
+                                    <div class="strength-label">Password strength: <span id="strength-txt">None</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label class="checkbox-container" style="font-size: 13px; margin: 4px 0 12px;">
+                                <input type="checkbox" id="terms-accept" required>
+                                <span class="custom-checkbox"></span>
+                                <span>I agree to the <a href="#about"
+                                        style="color: var(--primary); font-weight: 500;">Terms of Service</a> and <a
+                                        href="#about" style="color: var(--primary); font-weight: 500;">Privacy
+                                        Policy</a></span>
+                            </label>
+                            <span class="input-error-msg" id="terms-accept-error"
+                                style="margin-top: -8px; margin-bottom: 8px;">You must accept the terms to
+                                proceed.</span>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                Create Account
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="auth-footer">
+                        Already have an account? <a href="#login">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <!-- Brand Column -->
+            <div class="footer-logo-area">
+                <a href="#home" class="logo">
+                    <svg class="logo-svg" viewBox="0 0 32 32">
+                        <path d="M16 2 L2 9 L2 23 L16 30 L30 23 L30 9 Z" />
+                        <path d="M16 8 L6 13 L6 19 L16 24 L26 19 L26 13 Z" style="opacity: 0.7;" />
+                        <circle cx="16" cy="16" r="3" fill="url(#logoGradient)" />
+                    </svg>
+                    AetherAI
+                </a>
+                <p>Next-generation machine intelligence orchestrating automated enterprise infrastructure operations
+                    globally.</p>
+            </div>
+
+            <!-- Links Column 1 -->
+            <div class="footer-column">
+                <h4>Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="#home" class="footer-link">Core Neural</a></li>
+                    <li><a href="#home" class="footer-link">Integrations</a></li>
+                    <li><a href="#home" class="footer-link">Pricing Model</a></li>
+                </ul>
+            </div>
+
+            <!-- Links Column 2 -->
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#about" class="footer-link">Documentation</a></li>
+                    <li><a href="#contact" class="footer-link">System Status</a></li>
+                    <li><a href="#about" class="footer-link">Security Center</a></li>
+                </ul>
+            </div>
+
+            <!-- Links Column 3 -->
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#about" class="footer-link">About Us</a></li>
+                    <li><a href="#contact" class="footer-link">Contact Us</a></li>
+                    <li><a href="#about" class="footer-link">Press Kit</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Column -->
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to operations insights and model release briefs from Aether Labs.</p>
+                <form id="newsletter-form" class="newsletter-form" novalidate>
+                    <input type="email" id="newsletter-email" class="newsletter-input" placeholder="Enter your email"
+                        required autocomplete="email">
+                    <button type="submit" class="newsletter-submit" aria-label="Subscribe to newsletter">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <div>&copy; 2026 AetherAI Corp. All rights reserved.</div>
+            <div class="footer-socials">
+                <a href="#" class="social-icon" aria-label="Twitter"><svg width="14" height="14" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                    </svg></a>
+                <a href="#" class="social-icon" aria-label="GitHub"><svg width="14" height="14" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg></a>
+                <a href="#" class="social-icon" aria-label="LinkedIn"><svg width="14" height="14" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toast-bin"></div>
+
+    <!-- Page Javascript Routing & Dynamic Content -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. SPA ROUTING ENGINE ---
+            const routes = {
+                '#home': 'home',
+                '#about': 'about',
+                '#contact': 'contact',
+                '#login': 'login',
+                '#register': 'register'
+            };
+
+            const sections = document.querySelectorAll('.page-section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobLinks = document.querySelectorAll('.mobile-menu-link');
+
+            function handleRouting() {
+                const hash = window.location.hash || '#home';
+                const targetId = routes[hash] || 'home';
+
+                // Close mobile drawer on route change
+                closeMobileDrawer();
+
+                sections.forEach(sec => {
+                    if (sec.id === targetId) {
+                        sec.classList.add('active');
+                    } else {
+                        sec.classList.remove('active');
+                    }
+                });
+
+                // Update navbar states
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === hash) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                // Update mobile drawer states
+                mobLinks.forEach(link => {
+                    if (link.getAttribute('href') === hash) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                // Scroll to top of viewport
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
+
+            window.addEventListener('hashchange', handleRouting);
+            // Run on initial load
+            handleRouting();
+
+
+            // --- 2. HEADER SCROLL FX ---
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+
+            // --- 3. MOBILE MENU TOGGLE ---
+            const burgerBtn = document.getElementById('burger-btn');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+
+            burgerBtn.addEventListener('click', () => {
+                const isOpen = mobileDrawer.classList.contains('open');
+                if (isOpen) {
+                    closeMobileDrawer();
+                } else {
+                    openMobileDrawer();
+                }
+            });
+
+            function openMobileDrawer() {
+                mobileDrawer.classList.add('open');
+                burgerBtn.classList.add('open');
+                burgerBtn.setAttribute('aria-expanded', 'true');
+            }
+
+            function closeMobileDrawer() {
+                mobileDrawer.classList.remove('open');
+                burgerBtn.classList.remove('open');
+                burgerBtn.setAttribute('aria-expanded', 'false');
+            }
+
+
+            // --- 4. ACCORDION FAQ CONTROLLER ---
+            const faqHeaders = document.querySelectorAll('.faq-header');
+            faqHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const currentItem = header.parentElement;
+                    const isActive = currentItem.classList.contains('active');
+
+                    // Close other items
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+
+                    if (!isActive) {
+                        currentItem.classList.add('active');
+                    }
+                });
+            });
+
+
+            // --- 5. TOAST NOTIFICATION DISPATCHER ---
+            const toastBin = document.getElementById('toast-bin');
+
+            function showToast(title, message, duration = 4000) {
+                const toast = document.createElement('div');
+                toast.className = 'toast toast-success';
+
+                toast.innerHTML = `
+                    <svg class="toast-icon-success" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                    </svg>
+                    <div class="toast-content">
+                        <h5>${title}</h5>
+                        <p>${message}</p>
+                    </div>
+                `;
+
+                toastBin.appendChild(toast);
+
+                // Trigger transition
+                setTimeout(() => toast.classList.add('show'), 50);
+
+                // Remove toast after duration
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => toast.remove(), 400);
+                }, duration);
+            }
+
+
+            // --- 6. HOME PAGE INTERACTIVE DASHBOARD ---
+            const terminal = document.getElementById('terminal-screen');
+            const accuracyVal = document.getElementById('model-accuracy-val');
+            const accuracyFill = document.getElementById('model-accuracy-fill');
+            const workloadVal = document.getElementById('workload-volume-val');
+            const workloadFill = document.getElementById('workload-volume-fill');
+
+            const commands = [
+                'aether-core sync --cluster us-east-3',
+                'aether-security rotate-keys --service internal',
+                'aether-analytics query "failures > 0" --limit 5',
+                'aether-neural refine-weights --dataset live-ops',
+                'aether-core scale --nodes +12 --zone eu-central'
+            ];
+
+            const logs = [
+                '[INFO] Synchronizing 42 regional clusters... OK',
+                '[SUCCESS] Keys rotated. 2048-bit GCM re-established.',
+                '[METRIC] Zero failure anomalies detected.',
+                '[OPTIMIZATION] Neural weights shifted: +0.021 accuracy.',
+                '[INFRASTRUCTURE] Provisioned 12 new nodes in eu-central.'
+            ];
+
+            let step = 0;
+            setInterval(() => {
+                if (!document.getElementById('home').classList.contains('active')) return;
+
+                // Add commands and outputs to dashboard terminal
+                const cmdIndex = step % commands.length;
+
+                const cmdLine = document.createElement('div');
+                cmdLine.className = 'terminal-line';
+                cmdLine.innerHTML = `<span class="terminal-prompt">$</span><span class="terminal-text">${commands[cmdIndex]}</span>`;
+
+                const outLine = document.createElement('div');
+                outLine.className = 'terminal-line';
+                outLine.innerHTML = `<span class="terminal-prompt">&gt;</span><span class="terminal-text" style="color: ${cmdIndex === 1 || cmdIndex === 4 ? 'var(--accent)' : 'var(--text-muted)'};">${logs[cmdIndex]}</span>`;
+
+                terminal.appendChild(cmdLine);
+                terminal.appendChild(outLine);
+
+                // Scroll terminal down
+                terminal.scrollTop = terminal.scrollHeight;
+
+                // Maintain limit of lines
+                while (terminal.childElementCount > 8) {
+                    terminal.removeChild(terminal.firstElementChild);
+                }
+
+                // Randomly drift statistics
+                if (step % 2 === 0) {
+                    const driftAcc = (99.70 + Math.random() * 0.25).toFixed(2);
+                    accuracyVal.textContent = driftAcc + '%';
+                    accuracyFill.style.width = driftAcc + '%';
+
+                    const baseWorkloads = 420.0 + (step * 0.7) + (Math.random() * 2);
+                    workloadVal.textContent = baseWorkloads.toFixed(1) + 'k';
+                    workloadFill.style.width = Math.min((baseWorkloads / 5).toFixed(0), 100) + '%';
+                }
+
+                step++;
+            }, 3000);
+
+
+            // --- 7. PASSWORD VISIBILITY TOGGLE ---
+            function setupPasswordToggle(inputId, buttonId, eyeId) {
+                const input = document.getElementById(inputId);
+                const button = document.getElementById(buttonId);
+                const eye = document.getElementById(eyeId);
+
+                button.addEventListener('click', () => {
+                    const isPassword = input.getAttribute('type') === 'password';
+                    input.setAttribute('type', isPassword ? 'text' : 'password');
+
+                    if (isPassword) {
+                        // Shown
+                        eye.innerHTML = `
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+                        `;
+                    } else {
+                        // Hidden
+                        eye.innerHTML = `
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        `;
+                    }
+                });
+            }
+
+            setupPasswordToggle('login-password', 'login-pw-toggle', 'login-pw-eye');
+            setupPasswordToggle('register-password', 'register-pw-toggle', 'register-pw-eye');
+
+
+            // --- 8. REGISTER PASSWORD STRENGTH METER ---
+            const regPassword = document.getElementById('register-password');
+            const seg1 = document.getElementById('seg-1');
+            const seg2 = document.getElementById('seg-2');
+            const seg3 = document.getElementById('seg-3');
+            const strengthTxt = document.getElementById('strength-txt');
+
+            regPassword.addEventListener('input', () => {
+                const val = regPassword.value;
+                let score = 0;
+
+                if (val.length >= 6) score++;
+                if (val.length >= 10) score++;
+                if (/[A-Z]/.test(val) && /[0-9]/.test(val) && /[^A-Za-z0-9]/.test(val)) score++;
+
+                // Reset segment colors
+                seg1.style.background = 'transparent';
+                seg2.style.background = 'transparent';
+                seg3.style.background = 'transparent';
+
+                if (val.length === 0) {
+                    strengthTxt.textContent = 'None';
+                    strengthTxt.style.color = 'var(--text-muted)';
+                } else if (score === 1) {
+                    strengthTxt.textContent = 'Weak';
+                    strengthTxt.style.color = 'var(--danger)';
+                    seg1.style.background = 'var(--danger)';
+                } else if (score === 2) {
+                    strengthTxt.textContent = 'Medium';
+                    strengthTxt.style.color = 'var(--warning)';
+                    seg1.style.background = 'var(--warning)';
+                    seg2.style.background = 'var(--warning)';
+                } else if (score >= 3) {
+                    strengthTxt.textContent = 'Strong';
+                    strengthTxt.style.color = 'var(--success)';
+                    seg1.style.background = 'var(--success)';
+                    seg2.style.background = 'var(--success)';
+                    seg3.style.background = 'var(--success)';
+                }
+            });
+
+
+            // --- 9. FORM VALIDATIONS & HANDLING ---
+
+            // Utility validation rules
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            function validateField(inputEl, errorEl, ruleFn) {
+                const isValid = ruleFn(inputEl.value);
+                if (isValid) {
+                    inputEl.classList.remove('error');
+                    errorEl.classList.remove('visible');
+                } else {
+                    inputEl.classList.add('error');
+                    errorEl.classList.add('visible');
+                }
+                return isValid;
+            }
+
+            // Real-time input listeners to clear errors on change
+            const formInputs = document.querySelectorAll('.input-field');
+            formInputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    input.classList.remove('error');
+                    const errEl = document.getElementById(`${input.id}-error`);
+                    if (errEl) errEl.classList.remove('visible');
+                });
+            });
+
+            // A. Contact Form
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const isNameValid = validateField(
+                    document.getElementById('contact-name'),
+                    document.getElementById('contact-name-error'),
+                    val => val.trim().length > 0
+                );
+
+                const isEmailValid = validateField(
+                    document.getElementById('contact-email'),
+                    document.getElementById('contact-email-error'),
+                    val => emailRegex.test(val.trim())
+                );
+
+                const isSubjectValid = validateField(
+                    document.getElementById('contact-subject'),
+                    document.getElementById('contact-subject-error'),
+                    val => val.trim().length > 0
+                );
+
+                const isMessageValid = validateField(
+                    document.getElementById('contact-message'),
+                    document.getElementById('contact-message-error'),
+                    val => val.trim().length > 0
+                );
+
+                if (isNameValid && isEmailValid && isSubjectValid && isMessageValid) {
+                    const senderName = document.getElementById('contact-name').value;
+                    showToast('Message Dispatched', `Thank you, ${senderName}. Our operational team will reply shortly.`);
+                    contactForm.reset();
+                }
+            });
+
+            // B. Login Form
+            const loginForm = document.getElementById('login-form');
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const isEmailValid = validateField(
+                    document.getElementById('login-email'),
+                    document.getElementById('login-email-error'),
+                    val => emailRegex.test(val.trim())
+                );
+
+                const isPasswordValid = validateField(
+                    document.getElementById('login-password'),
+                    document.getElementById('login-password-error'),
+                    val => val.length > 0
+                );
+
+                if (isEmailValid && isPasswordValid) {
+                    const email = document.getElementById('login-email').value;
+                    showToast('Session Initialized', `Authenticated as ${email}. Optimizing your workspaces...`);
+                    loginForm.reset();
+                    // Go to home after login
+                    setTimeout(() => {
+                        window.location.hash = '#home';
+                    }, 1000);
+                }
+            });
+
+            // C. Register Form
+            const registerForm = document.getElementById('register-form');
+            const termsCheckbox = document.getElementById('terms-accept');
+            const termsError = document.getElementById('terms-accept-error');
+
+            termsCheckbox.addEventListener('change', () => {
+                termsError.classList.remove('visible');
+            });
+
+            registerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const isNameValid = validateField(
+                    document.getElementById('register-name'),
+                    document.getElementById('register-name-error'),
+                    val => val.trim().length > 0
+                );
+
+                const isEmailValid = validateField(
+                    document.getElementById('register-email'),
+                    document.getElementById('register-email-error'),
+                    val => emailRegex.test(val.trim())
+                );
+
+                const isPasswordValid = validateField(
+                    document.getElementById('register-password'),
+                    document.getElementById('register-password-error'),
+                    val => val.length >= 6
+                );
+
+                const isTermsAccepted = termsCheckbox.checked;
+                if (!isTermsAccepted) {
+                    termsError.classList.add('visible');
+                } else {
+                    termsError.classList.remove('visible');
+                }
+
+                if (isNameValid && isEmailValid && isPasswordValid && isTermsAccepted) {
+                    const name = document.getElementById('register-name').value;
+                    showToast('Account Provisioned', `Welcome ${name}! Setting up your sandbox node instance.`);
+                    registerForm.reset();
+
+                    // Reset strength meter
+                    seg1.style.background = 'transparent';
+                    seg2.style.background = 'transparent';
+                    seg3.style.background = 'transparent';
+                    strengthTxt.textContent = 'None';
+                    strengthTxt.style.color = 'var(--text-muted)';
+
+                    // Go to home after registration
+                    setTimeout(() => {
+                        window.location.hash = '#home';
+                    }, 1000);
+                }
+            });
+
+            // D. Newsletter Form
+            const newsletterForm = document.getElementById('newsletter-form');
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const emailInput = document.getElementById('newsletter-email');
+                if (emailRegex.test(emailInput.value.trim())) {
+                    showToast('Subscription Secured', 'You have been enrolled in operations intelligence updates.');
+                    newsletterForm.reset();
+                } else {
+                    emailInput.style.borderColor = 'var(--danger)';
+                    setTimeout(() => {
+                        emailInput.style.borderColor = 'var(--border-color)';
+                    }, 2000);
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>
